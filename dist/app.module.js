@@ -12,11 +12,20 @@ const user_module_1 = require("./user/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const bookmark_module_1 = require("./bookmark/bookmark.module");
 const prisma_module_1 = require("./prisma/prisma.module");
+const config_1 = require("@nestjs/config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [user_module_1.UserModule, auth_module_1.AuthModule, bookmark_module_1.BookmarkModule, prisma_module_1.PrismaModule],
+        imports: [
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+            }),
+            user_module_1.UserModule,
+            auth_module_1.AuthModule,
+            bookmark_module_1.BookmarkModule,
+            prisma_module_1.PrismaModule
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;
